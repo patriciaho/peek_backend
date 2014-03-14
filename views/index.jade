@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  div#list
+    each thing, i in stories
+      div(id=thing.id)
+        h1= thing.title.$text
+        h3= thing.teaser.$text
+        button#select(onclick='select') Select
+        hr
+
+  h1#title= title
+  h3#teaser= teaser
+  p#text= paragraphs
+
+  select#wpm
+    option(value='100') 100 WPM
+    option(value='200') 200 WPM
+    option(value='300') 300 WPM
+    option(value='400') 400 WPM
+    option(value='500') 500 WPM
+    option(value='600') 600 WPM
+    option(value='700') 700 WPM
+    option(value='800') 800 WPM
+    option(value='900') 900 WPM
+  br
+  button#restart(onclick='restart()') Restart
+  button#rewind(onclick='rewind()') Rewind
+  button#submit(onclick='read()') Play
+  button#forward(onclick='forward()') FastForward
+  br
+  #reader(style='font-size: 36; width: 300px; border: 1px solid black; height: 50px;')
+    span#front(style='position: absolute;')
+    span#center(style='color: red; position: absolute; left: 100px;')
+    span#back(style='position: absolute;')
